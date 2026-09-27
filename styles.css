@@ -152,14 +152,49 @@ section {
     align-items: center;
 }
 
-.logo a {
-    font-family: var(--font-serif);
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--color-dark);
+.logo {
+    display: flex;
+    align-items: center;
 }
 
-.logo span {
+.brand-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.brand-emblem {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.brand-link:hover .brand-emblem {
+    transform: rotate(5deg) scale(1.05);
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+}
+
+.brand-doctor {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    letter-spacing: -0.2px;
+}
+
+.brand-clinic {
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
     color: var(--color-rose);
 }
 
@@ -590,6 +625,36 @@ section {
 
 .info-block p {
     color: #666;
+    line-height: 1.6;
+}
+
+.info-block a {
+    color: var(--color-dark);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.info-block a:hover {
+    color: var(--color-rose);
+}
+
+.map-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: var(--color-rose) !important;
+    font-weight: 600;
+    text-decoration: underline !important;
+}
+
+.location-badge {
+    color: var(--color-rose);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
 }
 
 .contact-form-wrapper {
@@ -643,15 +708,41 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* Map */
-.map-container line {
+.map-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.map-container iframe {
     display: block;
+}
+
+.map-bar {
+    background-color: var(--color-cream);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.map-bar-info {
+    font-size: 0.95rem;
+    color: var(--color-dark);
+}
+
+.map-bar-info strong {
+    color: var(--color-rose);
 }
 
 /* Footer */
 .footer {
     background-color: var(--color-dark);
     color: var(--color-white);
-    padding: 40px 0;
+    padding: 50px 0;
 }
 
 .footer-content {
@@ -663,38 +754,21 @@ input:focus, select:focus, textarea:focus {
     align-items: center;
 }
 
-.footer-logo {
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
-    font-weight: 700;
+.footer .brand-doctor {
+    color: var(--color-white);
 }
 
-.footer-logo span {
+.footer .brand-clinic {
     color: var(--color-rose);
 }
 
 .footer-copyright {
     font-size: 0.9rem;
     color: #aaa;
+    text-align: right;
+    line-height: 1.6;
 }
 
-.footer-socials {
-    display: flex;
-    gap: 10px;
-}
-
-.social-pill {
-    padding: 6px 16px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    font-size: 0.85rem;
-    transition: var(--transition);
-}
-
-.social-pill:hover {
-    background-color: var(--color-rose);
-    color: var(--color-white);
-}
 
 /* Responsive Breakpoints */
 @media (max-width: 1024px) {
@@ -805,8 +879,13 @@ input:focus, select:focus, textarea:focus {
 }
 
 @media (max-width: 600px) {
+    .brand-doctor { font-size: 1.15rem; }
+    .brand-clinic { font-size: 0.55rem; letter-spacing: 1.8px; }
+    .brand-emblem { width: 36px; height: 36px; }
     .hero-left h1 { font-size: 2.8rem; }
     .hero-buttons { flex-direction: column; width: 100%; max-width: 300px; }
     .form-row { flex-direction: column; gap: 0; }
     .info-blocks { grid-template-columns: 1fr; }
+    .map-bar { flex-direction: column; text-align: center; }
+    .footer-copyright { text-align: center; }
 }
